@@ -17,12 +17,15 @@
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
 //var fs = require("fs");
+console.log(process.env.ADMIN_USER)
+console.log(process.env.ADMIN_PWD)
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: process.env.PORT || 1880,
 
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
+    // To listen on all IPv6 addresses, set uiHost to "::",
     // The following property can be used to listen on a specific interface. For
     // example, the following would only allow connections from the local machine.
     //uiHost: "127.0.0.1",
@@ -39,6 +42,10 @@ module.exports = {
     // Timeout in milliseconds for TCP server socket connections
     //  defaults to no timeout
     //socketTimeout: 120000,
+
+    // Maximum number of messages to wait in queue while attempting to connect to TCP socket
+    //  defaults to 1000
+    //tcpMsgQueueSize: 2000,
 
     // Timeout in milliseconds for HTTP request connections
     //  defaults to 120 seconds
@@ -60,7 +67,7 @@ module.exports = {
     debugUseColors: true,
 
     // The file containing the flows. If not set, it defaults to flows_<hostname>.json
-    flowFile: 'flows.json',
+    // flowFile: 'flows.json',
 
     // To enabled pretty-printing of the flow within the flow file, set the following
     //  property to true:
@@ -72,7 +79,7 @@ module.exports = {
     // Note: once you set this property, do not change it - doing so will prevent
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
-    //credentialSecret: "a-secret-key",
+    // credentialSecret: "szsk",
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
@@ -114,14 +121,14 @@ module.exports = {
     // -----------------
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
-    adminAuth: {
-       type: "credentials",
-       users: [{
-           username: process.env.ADMIN_USER || "admin",
-           password: process.env.ADMIN_PWD || "",
-           permissions: "*"
-       }]
-    },
+    // adminAuth: {
+    //     type: "credentials",
+    //     users: [{
+    //         username: process.env.ADMIN_USER || "admin",
+    //         password: process.env.ADMIN_PWD || "",
+    //         permissions: "*"
+    //     }]
+    // },
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
@@ -155,8 +162,8 @@ module.exports = {
     // See https://github.com/troygoode/node-cors#configuration-options for
     // details on its contents. The following is a basic permissive set of options:
     httpNodeCors: {
-       origin: "*",
-       methods: "GET,PUT,POST,DELETE"
+        origin: "*",
+        methods: "GET,PUT,POST,DELETE"
     },
 
     // If you need to set an http proxy please set an environment variable
@@ -211,6 +218,17 @@ module.exports = {
         // j5board:require("johnny-five").Board({repl:false})
     },
 
+    // Context Storage
+    // The following property can be used to enable context storage. The configuration
+    // provided here will enable file-based context that flushes to disk every 30 seconds.
+    // Refer to the documentation for further options: https://nodered.org/docs/api/context/
+    //
+    //contextStorage: {
+    //    default: {
+    //        module:"localfilesystem"
+    //    },
+    //},
+
     // The following property can be used to order the categories in the editor
     // palette. If a node's category is not in the list, the category will get
     // added to the end of the palette.
@@ -231,9 +249,17 @@ module.exports = {
             // off - turn off all logging (doesn't affect metrics or audit)
             level: process.env.LOG_LEVEL || "info",
             // Whether or not to include metric events in the log output
-            metrics: false,
+            metrics: true,
             // Whether or not to include audit events in the log output
-            audit: false
+            audit: true
         }
-    }
+    },
+
+    // Customising the editor
+    editorTheme: {
+        projects: {
+            // To enable the Projects feature, set this value to true
+            enabled: false
+        }
+    },
 }

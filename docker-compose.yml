@@ -1,15 +1,20 @@
 version: '2'
 
+volumes:
+  nodered-data:
+
 services:
   rise-nodered:
     build: ./nodered
     environment: 
-      LOG_LEVEL: info
+      LOG_LEVEL: ${LOG_LEVEL}
       ADMIN_USER: ${NODE_RED_USER}
-      ADMIN_PWD: ${NODE_RED_ENCRYPTED_PASSWORD}
+      ADMIN_PWD: ${ENCRYPTED_PASSWORD}
     restart: always
     ports:
       - '80:1880'
+    volumes:
+      - 'nodered-data:/usr/src/node-red/data'
 
   # rise-ttn:
   #   build: ./ttn

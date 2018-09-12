@@ -1,8 +1,8 @@
-FROM resin/raspberrypi3-alpine-node:latest
+FROM resin/raspberrypi3-alpine-node:8
 
 WORKDIR /usr/src/node-red
 
-RUN adduser -h /usr/src/node-red -D -H red
+RUN adduser -D red
 
 COPY src/* ./
 
@@ -14,7 +14,7 @@ RUN npm install \
 
 USER red
 
-ENV FLOWS="flows.json" LOG_LEVEL="info" \
+ENV LOG_LEVEL="info" \
     NODE_PATH="/usr/src/node-red/node_modules:/data/node_modules" \
     ADMIN_USER="admin" ADMIN_PWD="" \
     INITSYSTEM="on"
