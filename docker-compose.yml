@@ -16,10 +16,10 @@ services:
     volumes:
       - 'nodered-data:/usr/src/node-red/data'
 
-  # rise-ttn:
-  #   build: ./ttn
-  #   environment: 
-  #     GW_ID: ${TTN_GW_ID}
-  #     GW_KEY: ${TTN_GW_KEY}
-  #     GW_RESET_PIN: ${TTN_GW_RESET_PIN}
-  #   restart: always
+  rise-ttn:
+    build: ./ttn
+    environment: 
+      GW_ID: ${TTN_GW_ID}
+      GW_KEY: ${TTN_GW_KEY}
+      GW_RESET_PIN: ${TTN_GW_RESET_PIN}
+    restart: always
