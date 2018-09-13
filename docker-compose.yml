@@ -9,7 +9,7 @@ services:
     environment: 
       LOG_LEVEL: ${LOG_LEVEL}
       ADMIN_USER: ${NODE_RED_USER}
-      ADMIN_PWD: ${ENCRYPTED_PASSWORD}
+      ADMIN_PWD: ${NODE_RED_PASSWORD}
     restart: always
     ports:
       - '80:1880'
