@@ -17,8 +17,6 @@
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
 //var fs = require("fs");
-console.log(process.env.ADMIN_USER)
-console.log(process.env.ADMIN_PWD)
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
@@ -124,8 +122,8 @@ module.exports = {
     adminAuth: {
         type: "credentials",
         users: [{
-            username: process.env.ADMIN_USER || "admin",
-            password: process.env.ADMIN_PWD || "",
+            username: process.env.NODE_RED_USER || "admin",
+            password: process.env.NODE_RED_PASSWORD || "",
             permissions: "*"
         }]
     },

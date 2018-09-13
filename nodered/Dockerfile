@@ -16,7 +16,7 @@ USER red
 
 ENV LOG_LEVEL="info" \
     NODE_PATH="/usr/src/node-red/node_modules:/data/node_modules" \
-    ADMIN_USER="admin" ADMIN_PWD="" \
+    NODE_RED_USER="admin" NODE_RED_PASSWORD="" \
     INITSYSTEM="on"
 
 EXPOSE 1880
