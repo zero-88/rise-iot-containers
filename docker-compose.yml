@@ -12,6 +12,6 @@ services:
     volumes:
       - 'nodered-data:/usr/src/node-red/data'
 
-  rise-ttn:
-    build: ./ttn
+  rise-gateway:
+    build: ./gateway
     restart: always

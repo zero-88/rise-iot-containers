@@ -6,7 +6,7 @@ Stack is included `nodered` and `TTN gateway`, that deployed via [`resin.io`](ht
 
 - Prerequisites:
 
-  Setup these environment variables via `Device Environment Variables` or `Device Service Variables` on `https://dashboard.resin.io`
+  Setup these environment variables via `Device Environment Variables` or `Device Service Variables` on [https://dashboard.resin.io](https://dashboard.resin.io)
 
   - `NODE_RED_USER` (required): Admin User login for `Basic Authentication`
   - `NODE_RED_PASSWORD`: Encrypted password with `bcrypt` with `compute = 8`
@@ -21,11 +21,11 @@ Stack is included `nodered` and `TTN gateway`, that deployed via [`resin.io`](ht
 
 - Prerequisites:
 
-  Setup these environment variables via `Device Environment Variables` or `Device Service Variables` on `https://dashboard.resin.io`
+  Setup these environment variables via `Device Environment Variables` or `Device Service Variables` on [https://dashboard.resin.io](https://dashboard.resin.io)
 
   - `GW_ID`: copy the value listed for the `Gateway ID` in the TTN console.
   - `GW_KEY`: on the TTN console click on the little eye icon to the right of `Gateway Key`, this will display the value. Now use the icon at the end of the line to copy the value (and display `copied`)
-  - `GW_RESET_PIN`: value = 11
+  - `GW_RESET_PIN`: value = `11`
 
 ## Deploy
 
