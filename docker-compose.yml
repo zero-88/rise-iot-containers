@@ -6,10 +6,6 @@ volumes:
 services:
   rise-nodered:
     build: ./nodered
-    environment: 
-      LOG_LEVEL: ${LOG_LEVEL}
-      ADMIN_USER: ${NODE_RED_USER}
-      ADMIN_PWD: ${NODE_RED_PASSWORD}
     restart: always
     ports:
       - '80:1880'
@@ -18,8 +14,4 @@ services:
 
   rise-ttn:
     build: ./ttn
-    environment: 
-      GW_ID: ${TTN_GW_ID}
-      GW_KEY: ${TTN_GW_KEY}
-      GW_RESET_PIN: ${TTN_GW_RESET_PIN}
     restart: always
