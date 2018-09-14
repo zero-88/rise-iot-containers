@@ -7,6 +7,7 @@ services:
   rise-nodered:
     build: ./nodered
     restart: always
+    privileged: true
     ports:
       - '80:1880'
     volumes:
@@ -15,5 +16,8 @@ services:
   rise-gateway:
     build: ./gateway
     restart: always
+    privileged: true
     devices:
       - "/dev/mem:/dev/mem"
+    cap_add: 
+      - SYS_RAWIO
