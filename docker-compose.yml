@@ -15,5 +15,5 @@ services:
   rise-gateway:
     build: ./gateway
     restart: always
-    volumes:
-      - '/dev:/dev:ro'
+    devices:
+      - "/dev/mem:/dev/mem"
