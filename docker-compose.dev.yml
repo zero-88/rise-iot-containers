@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  rise-nodered:
+    environment:
+      - NODE_RED_USER=${NODE_RED_USER}
+      - NODE_RED_PASSWORD=${NODE_RED_PASSWORD}
+      - NODE_RED_PLAIN_PASSWORD=${NODE_RED_PLAIN_PASSWORD}
+      - LOG_LEVEL=${LOG_LEVEL}
+
+
+  rise-gateway:
+    environment:
+      - GW_ID=${GW_ID}
+      - GW_KEY=${GW_KEY}
+      - GW_RESET_PIN=${GW_RESET_PIN}
