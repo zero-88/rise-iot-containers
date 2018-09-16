@@ -7,4 +7,4 @@ if [[ -z $NODE_RED_PASSWORD ]] ; then
     echo $NODE_RED_PASSWORD
 fi
 
-npm start -- --userDir ./data
+npm start -- --userDir /data
