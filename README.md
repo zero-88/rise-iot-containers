@@ -17,6 +17,10 @@ Stack is included `nodered` and `TTN gateway`, that deployed via [`resin.io`](ht
 
   If `NODE_RED_USER` or one of `NODE_RED_PASSWORD` and `NODE_RED_PLAIN_PASSWORD` is blank, service will crash.
 
+- `Implemenation note`:
+  - Require using USB -> add user to group `dialout`
+  - To add more libraries in NodeRed, update `package.json` then rebuild `resin` image by pushing code to your `git.resin.io`
+
 ## TTN Gateway
 
 - Prerequisites:
@@ -39,7 +43,7 @@ Stack is included `nodered` and `TTN gateway`, that deployed via [`resin.io`](ht
 2. Add `resin` remote.
 
    ```bash
-   git remote add resin <your resin.io account>@git.resin.io:<your resin.io account>/lorawangw.git
+   git remote add resin <your resin.io account>@git.resin.io:<your resin.io account>/rise-iot-containers.git
    ```
 
 3. Push to `resin` then enjoy coffee in while `resin` service build and deploy your app.
