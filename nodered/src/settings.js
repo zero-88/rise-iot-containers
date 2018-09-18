@@ -211,6 +211,7 @@ module.exports = {
         moment:require('moment-timezone'),
         request: require('request'),
         os:require('os'),
+        process:require('process'),
         // octalbonescript:require('octalbonescript'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})

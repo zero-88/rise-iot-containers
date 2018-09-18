@@ -1,0 +1,90 @@
+[{
+  "id": "9c4d517c.685ac",
+  "type": "tab",
+  "label": "Access Device Host",
+  "disabled": false,
+  "info": ""
+}, {
+  "id": "d875ec36.8da4d",
+  "type": "http request",
+  "z": "9c4d517c.685ac",
+  "name": "",
+  "method": "use",
+  "ret": "txt",
+  "url": "",
+  "tls": "",
+  "x": 530,
+  "y": 140,
+  "wires": [
+    ["49316bc5.f154c4"]
+  ]
+}, {
+  "id": "14f3b155.ffa03f",
+  "type": "function",
+  "z": "9c4d517c.685ac",
+  "name": "Define endpoint",
+  "func": "msg = {\n    \"url\": msg.payload + \":9991\",\n    \"method\": \"GET\"\n};\n\nreturn msg;",
+  "outputs": 1,
+  "noerr": 0,
+  "x": 340,
+  "y": 140,
+  "wires": [
+    ["d875ec36.8da4d", "c118179f.f07ce8"]
+  ]
+}, {
+  "id": "49316bc5.f154c4",
+  "type": "debug",
+  "z": "9c4d517c.685ac",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "payload",
+  "x": 740,
+  "y": 140,
+  "wires": []
+}, {
+  "id": "8380841d.b29998",
+  "type": "inject",
+  "z": "9c4d517c.685ac",
+  "name": "trigger",
+  "topic": "",
+  "payload": "RISE_HOST",
+  "payloadType": "env",
+  "repeat": "10",
+  "crontab": "",
+  "once": false,
+  "onceDelay": 0.1,
+  "x": 140,
+  "y": 140,
+  "wires": [
+    ["14f3b155.ffa03f", "4bcfa69.cf33158"]
+  ]
+}, {
+  "id": "4bcfa69.cf33158",
+  "type": "debug",
+  "z": "9c4d517c.685ac",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "payload",
+  "x": 300,
+  "y": 220,
+  "wires": []
+}, {
+  "id": "c118179f.f07ce8",
+  "type": "debug",
+  "z": "9c4d517c.685ac",
+  "name": "",
+  "active": true,
+  "tosidebar": true,
+  "console": false,
+  "tostatus": false,
+  "complete": "true",
+  "x": 500,
+  "y": 220,
+  "wires": []
+}]
