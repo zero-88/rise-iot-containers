@@ -22,6 +22,7 @@
         "node-red-node-suncalc": "*",
         "node-red-node-random": "*",
         "node-red-contrib-tplink-iot": "0.1.8",
+        "node-red-contrib-resinio": "0.1.8",
         "request": "2.88.0",
         "moment-timezone": "0.5.21",
         "bcryptjs": "2.4.3"

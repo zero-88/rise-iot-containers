@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-alpine-node:8
+FROM resin/raspberrypi3-alpine-node:8-slim
 
 WORKDIR /usr/src/node-red
 
@@ -7,7 +7,7 @@ RUN adduser -D red \
     && mkdir -p /data \
     && apk add --no-cache make gcc g++ python linux-headers udev py-rpigpio
 
-COPY src/* ./
+COPY src ./
 
 RUN npm install serialport@6.2.2 --build-from-source \ 
     && npm install \
