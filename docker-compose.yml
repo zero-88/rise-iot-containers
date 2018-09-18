@@ -32,3 +32,10 @@ services:
       - "/dev/mem:/dev/mem"
     cap_add:
       - SYS_RAWIO
+
+  rise-node:
+    build: ./node
+    restart: always
+    privileged: true
+    ports:
+      - "9991:80"
