@@ -16,6 +16,7 @@ services:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
       - "/dev/ttyS0:/dev/ttyS0"
       - "/dev/ttyAMA0:/dev/ttyAMA0"
+      - "/dev/bus/usb/:/dev/bus/usb/"
     cap_add:
       - SYS_RAWIO
     labels:

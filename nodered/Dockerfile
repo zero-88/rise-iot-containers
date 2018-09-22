@@ -2,22 +2,21 @@ FROM resin/raspberrypi3-alpine-node:8-slim
 
 WORKDIR /usr/src/node-red
 
-RUN adduser -D red \
-    && adduser red dialout \
-    && mkdir -p /data \
-    && apk add --no-cache make gcc g++ python linux-headers udev py-rpigpio
+RUN mkdir -p /data \
+    && apk add --no-cache make gcc g++ linux-headers udev libusb libusb-dev libusb-compat libusb-compat-dev python py-rpigpio
 
-COPY src ./
+COPY src hub-ctrl.c usbreset.c ./
 
-RUN npm install serialport@6.2.2 --build-from-source \ 
-    && npm install \
-    && chown -R red:red ./ \
-    && chmod o+w ./ \
-    && chown -R red:red /data \
-    && chmod o+w /data \
+RUN gcc -o hub-ctrl hub-ctrl.c -lusb \
+    && gcc usbreset.c -o usbreset \
+    && chmod a+x usbreset hub-ctrl
+
+RUN npm install serialport@6.2.2 --build-from-source
+
+RUN npm install \
     && chmod a+x start.sh
 
-USER red
+RUN apk del make gcc g++ && rm -rf /var/cache/apk/*
 
 ENV LOG_LEVEL="info" \
     NODE_PATH="/usr/src/node-red/node_modules" \

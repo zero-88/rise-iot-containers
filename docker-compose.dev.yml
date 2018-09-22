@@ -16,23 +16,22 @@ services:
       - GW_KEY=${GW_KEY}
       - GW_RESET_PIN=${GW_RESET_PIN}
 
-  # rise-host:
+  # rise-usb:
+  #   build: ./usbreset
+  #   restart: always
+  #   privileged: true
+  #   devices:
+  #     - "/dev/bus/usb/:/dev/bus/usb/"
   #   environment:
-  #     - HOST_PORTS=22,23,80,48484
+  #     - USB_VENDOR_ID=0951
+  #     - USB_VENDOR_PRODUCT=1642
   
-  # rise-node:
-  #   build: ./node
+  # rise-python:
+  #   build: ./python
   #   restart: always
   #   privileged: true
   #   ports:
-  #     - "9991:80"
-  
-  rise-simple:
-    build: ./simple
-    restart: always
-    privileged: true
-    ports:
-      - "9999:5000"
+  #     - "9999:5000"
 
   # rise-host:
   #   build: ./host

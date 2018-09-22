@@ -1,14 +1,12 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:8-slim
+FROM resin/raspberrypi3-alpine-node:8-slim
 
 WORKDIR /usr/src/app
 
 COPY package.json package.json
 
 RUN JOBS=MAX npm install --production --unsafe-perm && rm -rf /tmp/*
-
 COPY . ./
 
-# Enable systemd init system in container
 ENV INITSYSTEM on
 
 CMD ["npm", "start"]
