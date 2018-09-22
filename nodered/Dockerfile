@@ -9,7 +9,8 @@ COPY src hub-ctrl.c usbreset.c ./
 
 RUN gcc -o hub-ctrl hub-ctrl.c -lusb \
     && gcc usbreset.c -o usbreset \
-    && chmod a+x usbreset hub-ctrl
+    && chmod a+x usbreset hub-ctrl \
+    && mv usbreset hub-ctrl /usr/bin
 
 RUN npm install serialport@6.2.2 --build-from-source
 
