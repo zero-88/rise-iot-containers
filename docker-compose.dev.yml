@@ -9,6 +9,8 @@ services:
       - LOG_LEVEL=${LOG_LEVEL}
       - RESIN_SUPERVISOR_ADDRESS=${RESIN_SUPERVISOR_ADDRESS}
       - RESIN_SUPERVISOR_API_KEY=${RESIN_SUPERVISOR_API_KEY}
+      - USB_VENDOR_ID=${USB_VENDOR_ID}
+      - USB_VENDOR_PRODUCT=${USB_VENDOR_PRODUCT}
 
   rise-gateway:
     environment:
@@ -23,8 +25,8 @@ services:
   #   devices:
   #     - "/dev/bus/usb/:/dev/bus/usb/"
   #   environment:
-  #     - USB_VENDOR_ID=0951
-  #     - USB_VENDOR_PRODUCT=1642
+  #     - USB_VENDOR_ID=
+  #     - USB_VENDOR_PRODUCT=
   
   # rise-python:
   #   build: ./python
