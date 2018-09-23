@@ -10,6 +10,6 @@ if [[ -z $NODE_RED_PASSWORD ]] ; then
 fi
 
 mkdir -p /data/lib/flows/
-cp -rf ./flows/*.json /data/lib/flows/
+cp -rf ./flows/lib/*.json /data/lib/flows/
 
 npm start -- --userDir /data -s settings.js

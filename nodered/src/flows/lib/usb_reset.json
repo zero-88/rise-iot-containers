@@ -1,0 +1,356 @@
+[{
+    "id": "1d84975e.d28b69",
+    "type": "subflow",
+    "name": "Detect online",
+    "info": "",
+    "in": [{
+        "x": 260,
+        "y": 100,
+        "wires": [{
+            "id": "e01e3cff.fdb5f"
+        }, {
+            "id": "7406f000.b12f6"
+        }, {
+            "id": "7619126f.85b5ac"
+        }]
+    }],
+    "out": [{
+        "x": 1440,
+        "y": 140,
+        "wires": [{
+            "id": "304a04dc.daf94c",
+            "port": 0
+        }, {
+            "id": "5e2c883b.9d6c18",
+            "port": 0
+        }]
+    }]
+}, {
+    "id": "e36d8f11.41ae8",
+    "type": "delay",
+    "z": "1d84975e.d28b69",
+    "name": "",
+    "pauseType": "delayv",
+    "timeout": "5",
+    "timeoutUnits": "seconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 870,
+    "y": 160,
+    "wires": [
+        ["816b6706.f99c78"]
+    ]
+}, {
+    "id": "5e2c883b.9d6c18",
+    "type": "inject",
+    "z": "1d84975e.d28b69",
+    "name": "Startup",
+    "topic": "",
+    "payload": "false",
+    "payloadType": "bool",
+    "repeat": "",
+    "crontab": "",
+    "once": true,
+    "x": 930,
+    "y": 260,
+    "wires": [
+        ["816b6706.f99c78"]
+    ]
+}, {
+    "id": "7406f000.b12f6",
+    "type": "change",
+    "z": "1d84975e.d28b69",
+    "name": "",
+    "rules": [{
+        "t": "set",
+        "p": "reset",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 670,
+    "y": 160,
+    "wires": [
+        ["e36d8f11.41ae8"]
+    ]
+}, {
+    "id": "d696088b.26b188",
+    "type": "delay",
+    "z": "1d84975e.d28b69",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "10",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "x": 660,
+    "y": 200,
+    "wires": [
+        ["e36d8f11.41ae8"]
+    ]
+}, {
+    "id": "e01e3cff.fdb5f",
+    "type": "change",
+    "z": "1d84975e.d28b69",
+    "name": "Online",
+    "rules": [{
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "true",
+        "tot": "bool"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1030,
+    "y": 110,
+    "wires": [
+        ["6da95fde.2ef5f"]
+    ]
+}, {
+    "id": "816b6706.f99c78",
+    "type": "change",
+    "z": "1d84975e.d28b69",
+    "name": "Offline",
+    "rules": [{
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "false",
+        "tot": "bool"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1030,
+    "y": 160,
+    "wires": [
+        ["6da95fde.2ef5f"]
+    ]
+}, {
+    "id": "304a04dc.daf94c",
+    "type": "rbe",
+    "z": "1d84975e.d28b69",
+    "name": "",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "x": 1300,
+    "y": 140,
+    "wires": [
+        []
+    ]
+}, {
+    "id": "7619126f.85b5ac",
+    "type": "change",
+    "z": "1d84975e.d28b69",
+    "name": "",
+    "rules": [{
+        "t": "set",
+        "p": "delay",
+        "pt": "msg",
+        "to": "timeout",
+        "tot": "msg"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 440,
+    "y": 200,
+    "wires": [
+        ["d696088b.26b188"]
+    ]
+}, {
+    "id": "f19e3758.567578",
+    "type": "comment",
+    "z": "1d84975e.d28b69",
+    "name": "Each incoming message will retrigger a new timeout (msg.timeout [ms]) before being reported offline",
+    "info": "",
+    "x": 590,
+    "y": 40,
+    "wires": []
+}, {
+    "id": "6da95fde.2ef5f",
+    "type": "change",
+    "z": "1d84975e.d28b69",
+    "name": "Offline",
+    "rules": [{
+        "t": "set",
+        "p": "topic",
+        "pt": "msg",
+        "to": "isonline",
+        "tot": "str"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 1170,
+    "y": 140,
+    "wires": [
+        ["304a04dc.daf94c"]
+    ]
+}, {
+    "id": "2c559101.da5cce",
+    "type": "bigexec",
+    "z": "548efb2d.6b9684",
+    "name": "usb-reset",
+    "command": "./usbreset.sh",
+    "commandArgs": "",
+    "minError": 1,
+    "minWarning": 1,
+    "cwd": "",
+    "shell": true,
+    "extraArgumentProperty": "",
+    "envProperty": "",
+    "format": "utf8",
+    "limiter": true,
+    "payloadIs": "trigger",
+    "x": 780,
+    "y": 460,
+    "wires": [
+        ["c41236e6.045c98"],
+        ["c41236e6.045c98"],
+        ["c41236e6.045c98"]
+    ]
+}, {
+    "id": "c41236e6.045c98",
+    "type": "debug",
+    "z": "548efb2d.6b9684",
+    "name": "bash output",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 970,
+    "y": 460,
+    "wires": []
+}, {
+    "id": "89b5ca50.85e188",
+    "type": "function",
+    "z": "548efb2d.6b9684",
+    "name": "Watchdog",
+    "func": "if (msg.payload !== undefined || msg.payload !== null || msg.payload !== \"\") {\n    return {\"reset\": true, \"trigger\": false}\n}\nreturn {\"trigger\": true};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 380,
+    "y": 520,
+    "wires": [
+        ["dcb2047d.91dfa8", "ee648198.26a7f"]
+    ]
+}, {
+    "id": "dcb2047d.91dfa8",
+    "type": "trigger",
+    "z": "548efb2d.6b9684",
+    "op1": "",
+    "op2": "Reset USB",
+    "op1type": "nul",
+    "op2type": "str",
+    "duration": "1",
+    "extend": false,
+    "units": "min",
+    "reset": "",
+    "bytopic": "all",
+    "name": "",
+    "x": 590,
+    "y": 500,
+    "wires": [
+        ["42fa3e0d.b3baa", "2c559101.da5cce"]
+    ]
+}, {
+    "id": "42fa3e0d.b3baa",
+    "type": "debug",
+    "z": "548efb2d.6b9684",
+    "name": "debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 770,
+    "y": 560,
+    "wires": []
+}, {
+    "id": "ee648198.26a7f",
+    "type": "debug",
+    "z": "548efb2d.6b9684",
+    "name": "debug",
+    "active": false,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 570,
+    "y": 560,
+    "wires": []
+}, {
+    "id": "8a7bf31a.0e8a5",
+    "type": "subflow:1d84975e.d28b69",
+    "z": "548efb2d.6b9684",
+    "name": "",
+    "x": 590,
+    "y": 380,
+    "wires": [
+        ["2c559101.da5cce", "2f5d5450.d7ee6c"]
+    ]
+}, {
+    "id": "a09cd1f.9beb63",
+    "type": "change",
+    "z": "548efb2d.6b9684",
+    "name": "Timeout 1 min",
+    "rules": [{
+        "t": "set",
+        "p": "timeout",
+        "pt": "msg",
+        "to": "60000",
+        "tot": "str"
+    }],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 400,
+    "y": 380,
+    "wires": [
+        ["8a7bf31a.0e8a5"]
+    ]
+}, {
+    "id": "2f5d5450.d7ee6c",
+    "type": "debug",
+    "z": "548efb2d.6b9684",
+    "name": "debug",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "x": 750,
+    "y": 340,
+    "wires": []
+}]
