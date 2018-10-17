@@ -14,6 +14,9 @@ services:
       - "nodered-data:/data"
     devices:
       - "/dev/ttyUSB0:/dev/ttyUSB0"
+      - "/dev/ttyUSB1:/dev/ttyUSB1"
+      - "/dev/ttyUSB3:/dev/ttyUSB3"
+      - "/dev/ttyUSB4:/dev/ttyUSB4"
       - "/dev/ttyS0:/dev/ttyS0"
       - "/dev/ttyAMA0:/dev/ttyAMA0"
       - "/dev/bus/usb/:/dev/bus/usb/"
@@ -39,4 +42,4 @@ services:
     restart: always
     privileged: true
     ports:
-      - "9991:80"
+      - "$RISE_NODE_PORT:80"
